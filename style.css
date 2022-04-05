@@ -2,7 +2,7 @@
 /* 브라우저 기본 설정(Margin 등..) 없애주는 reset.css !! */
 
 body {
-    background-color: beige;
+    background-color: burlywood;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     display: flex;
     flex-direction: column;
@@ -24,11 +24,43 @@ body {
 }
 
 .controls {
-    margin-top: 20px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.controls .contorls_btns {
+    margin-bottom: 30px;
+}
+
+.contorls_btns button {
+    all: unset;
+    /* //효과를 다 없애주는 건가봄... */
+    cursor: pointer;
+    /* 커서를 포인터로.. */
+    background-color: white;
+    padding: 5px, 0px;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+    /* CSS 디자인 하는거에 참고하면 좋을 듯.. 깔끔하고 보기좋음 */
+}
+
+.contorls_btns button:active {
+    transform: scale(0.96);
+}
+
 .controls .controls_colors {
     display: flex;
 }
+
 .controls_colors .controls_color {
     width: 50px;
     height: 50px;
@@ -37,4 +69,16 @@ body {
     cursor: pointer;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.controls_colors .controls_color:active {
+    transform: scale(0.96);
+}
+
+.controls .controls_range {
+    margin-bottom: 30px;
+}
+
+.controls .controls_range input {
+    cursor: pointer;
 }
