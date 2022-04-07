@@ -66,7 +66,7 @@ function handleRangeChangeByWheel(event) {
     // console.log(event.wheelDelta / 120);
 
     if (event.wheelDelta / 120 > 0) {
-        range.value += range.step;
+        range.value += range.step; // 현재 스탭이 소숫점일경우 2.6, 아닐경우 5로 바뀜... 왜지:??
     }
     if (event.wheelDelta / 120 < 0) {
         range.value -= range.step;
