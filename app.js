@@ -12,7 +12,7 @@ const clearBtn = document.querySelector("#jsClear");
 const INITIAL_COLOR = "#2c2c2c";
 const INITIAL_LINE_WIDTH = "2.5";
 const CANVAS_DEFAULT_SIZE = "500";
-const INITIAL_CANVAS_COLOR = "#F9FAFB";
+const INITIAL_CANVAS_COLOR = "white";
 
 /////////////////색상적용//////////////////////
 function handleColorClick(event) {
@@ -66,9 +66,8 @@ function handleRangeChangeByWheel(event) {
     // console.log(event.wheelDelta / 120);
 
     if (event.wheelDelta / 120 > 0) {
-        range.value += range.step; // 현재 스탭이 소숫점일경우 2.6, 아닐경우 5로 바뀜... 왜지:??
-    }
-    if (event.wheelDelta / 120 < 0) {
+        range.value += range.step;
+    } else if (event.wheelDelta / 120 < 0) {
         range.value -= range.step;
     }
     console.log(range.value);
