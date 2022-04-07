@@ -37,8 +37,6 @@ let painting = false;
 let filling = true;
 
 function onMouseMove(event) {
-    // offsetX: 140 //캔버스 위에서 마우스 위치
-    // offsetY: 148
     const x = event.offsetX;
     const y = event.offsetY;
     if (!painting && !filling) {
@@ -64,10 +62,29 @@ function fillCanvas() {
     }
 }
 
+function handleRangeChangeByWheel(event) {
+    // console.log(event.wheelDelta / 120);
+
+    if (event.wheelDelta / 120 > 0) {
+        range.value += range.step;
+    }
+    if (event.wheelDelta / 120 < 0) {
+        range.value -= range.step;
+    }
+    console.log(range.value);
+    const strokeSize = range.value;
+    ctx.lineWidth = strokeSize * 5;
+}
+
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
+    //휴대폰 전용 이벤트 START
+    canvas.addEventListener("touchmove", onMouseMove);
+    canvas.addEventListener("touchstart", startPainting);
+    canvas.addEventListener("touchend", stopPainting);
+    //휴대폰 전용 이벤트 END
     canvas.addEventListener("click", fillCanvas);
     // canvas.addEventListener("mouseleave", stopPainting);
     canvas.addEventListener("wheel", handleRangeChangeByWheel); //여기 하는중이였음 스크롤하면 Range 이동하게
@@ -77,12 +94,6 @@ function handleRangeChange(event) {
     console.log(event.target.value);
     const strokeSize = event.target.value;
     ctx.lineWidth = strokeSize * 5;
-}
-
-function handleRangeChangeByWheel(event) {
-    console.log(event);
-    // const strokeSize = event.target.value;
-    // ctx.lineWidth = strokeSize * 5;
 }
 
 if (range) {
