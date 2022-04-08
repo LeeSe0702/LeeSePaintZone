@@ -20,7 +20,6 @@ function handleColorClick(event) {
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
 
-    console.log(colorPreview);
     colorPreview.style.backgroundColor = color;
 }
 
@@ -31,7 +30,7 @@ canvas.width = CANVAS_DEFAULT_SIZE;
 canvas.height = CANVAS_DEFAULT_SIZE;
 
 ctx.strokeStyle = INITIAL_COLOR;
-ctx.lineWidth = INITIAL_LINE_WIDTH;
+ctx.lineWidth = INITIAL_LINE_WIDTH * 5;
 
 let painting = false;
 let filling = true;
@@ -63,14 +62,13 @@ function fillCanvas() {
 }
 
 function handleRangeChangeByWheel(event) {
-    // console.log(event.wheelDelta / 120);
-
+    let rangeValue = Number(range.value);
     if (event.wheelDelta / 120 > 0) {
-        range.value += range.step;
+        rangeValue += Number(range.step);
     } else if (event.wheelDelta / 120 < 0) {
-        range.value -= range.step;
+        rangeValue -= Number(range.step);
     }
-    console.log(range.value);
+    range.value = rangeValue;
     const strokeSize = range.value;
     ctx.lineWidth = strokeSize * 5;
 }
@@ -90,7 +88,6 @@ if (canvas) {
 }
 
 function handleRangeChange(event) {
-    console.log(event.target.value);
     const strokeSize = event.target.value;
     ctx.lineWidth = strokeSize * 5;
 }
