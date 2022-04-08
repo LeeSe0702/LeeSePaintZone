@@ -28,6 +28,8 @@ Array.from(colors).forEach((color) => color.addEventListener("click", handleColo
 
 canvas.width = CANVAS_DEFAULT_SIZE;
 canvas.height = CANVAS_DEFAULT_SIZE;
+ctx.fillStyle = INITIAL_CANVAS_COLOR;
+ctx.fillRect(0, 0, CANVAS_DEFAULT_SIZE, CANVAS_DEFAULT_SIZE);
 
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.lineWidth = INITIAL_LINE_WIDTH * 5;
@@ -118,4 +120,25 @@ function handleClearAll() {
 }
 if (clearBtn) {
     clearBtn.addEventListener("click", handleClearAll);
+}
+
+function handleSaveButton() {
+    const date = new Date();
+    const yyyy = date.getFullYear(); //연
+    const mm = String(date.getMonth()).padStart(2, "0"); //월
+    const dd = String(date.getDay()).padStart(2, "0"); //일
+    const hour = String(date.getHours()).padStart(2, "0"); //시
+    const min = String(date.getMinutes()).padStart(2, "0"); //분
+    const sec = String(date.getSeconds()).padStart(2, "0"); //초
+    const today = yyyy + mm + dd + hour + min + sec;
+
+    const image = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = image; //다운받을 이미지 URL .href
+    link.download = `${today}_paintJS[🎉]`; //다운받을 이미지 명지정 .download
+    // link.click();
+    link.click();
+}
+if (saveBtn) {
+    saveBtn.addEventListener("click", handleSaveButton);
 }
