@@ -10,6 +10,7 @@ const saveBtn = document.querySelector("#jsSave");
 const clearBtn = document.querySelector("#jsClear");
 
 const INITIAL_COLOR = "#2c2c2c";
+let titian;
 const INITIAL_LINE_WIDTH = "2.5";
 const CANVAS_DEFAULT_SIZE = "500";
 const INITIAL_CANVAS_COLOR = "white";
